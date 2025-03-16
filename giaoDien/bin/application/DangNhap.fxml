@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f7f2f2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DangNhapController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="405.0" prefWidth="502.0" styleClass="vbox">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đăng nhập">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Text>
+            <TilePane alignment="CENTER" prefHeight="132.0" prefWidth="502.0">
+               <children>
+                  <TextField focusTraversable="false" prefHeight="71.0" prefWidth="400.0" promptText=" Tên đăng nhập" style="-fx-background-radius: 50;">
+                     <font>
+                        <Font size="25.0" />
+                     </font></TextField>
+               </children>
+            </TilePane>
+            <TilePane alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="502.0" vgap="20.0">
+               <children>
+                  <PasswordField focusTraversable="false" prefHeight="71.0" prefWidth="400.0" promptText=" Mật khẩu" style="-fx-background-radius: 50;">
+                     <font>
+                        <Font size="25.0" />
+                     </font></PasswordField>
+               </children>
+            </TilePane>
+            <TilePane alignment="CENTER" prefHeight="75.0" prefWidth="502.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="294.0" style="-fx-background-radius: 40;" text="Đăng nhập">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </TilePane>
+            <Text fx:id="myText" onMouseClicked="#loadDangKy" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" strokeType="OUTSIDE" strokeWidth="0.0" text="Chưa có tài khoản? Đăng ký" wrappingWidth="246.1328125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</TilePane>
