@@ -14,7 +14,6 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("DangNhap.fxml"));
 			Scene scene = new Scene (root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Phần mềm quản lý chung cư");
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -1,6 +1,11 @@
 package application;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -39,5 +44,27 @@ public class SceneLoader {
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+    }
+    
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/taikhoan";
+    private static final String DB_USER = "root"; // Thay bằng user của bạn
+    private static final String DB_PASSWORD = "root"; // Thay bằng password của bạn
+
+    public static boolean checkLogin(String username, String password) {
+        String query = "SELECT * FROM cosodulieu WHERE taikhoan = ? AND matkhau = ?";
+        
+        try {
+        	Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            stmt.setString(2, password); // Chỉ dùng khi lưu mật khẩu dạng plaintext (KHÔNG KHUYẾN KHÍCH)
+
+            ResultSet rs = stmt.executeQuery();
+            return rs.next(); // Nếu có dòng kết quả, tài khoản hợp lệ
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

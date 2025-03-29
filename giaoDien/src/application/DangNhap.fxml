@@ -11,7 +11,7 @@
 
 <TilePane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f7f2f2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DangNhapController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="405.0" prefWidth="502.0" styleClass="vbox">
+      <VBox alignment="TOP_CENTER" prefHeight="483.0" prefWidth="522.0" styleClass="vbox">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Đăng nhập">
                <font>
@@ -20,7 +20,7 @@
             </Text>
             <TilePane alignment="CENTER" prefHeight="132.0" prefWidth="502.0">
                <children>
-                  <TextField focusTraversable="false" prefHeight="71.0" prefWidth="400.0" promptText=" Tên đăng nhập" style="-fx-background-radius: 50;">
+                  <TextField fx:id="tenDangNhap" focusTraversable="false" prefHeight="71.0" prefWidth="400.0" promptText=" Tên đăng nhập" style="-fx-background-radius: 50;">
                      <font>
                         <Font size="25.0" />
                      </font></TextField>
@@ -28,7 +28,7 @@
             </TilePane>
             <TilePane alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="502.0" vgap="20.0">
                <children>
-                  <PasswordField focusTraversable="false" prefHeight="71.0" prefWidth="400.0" promptText=" Mật khẩu" style="-fx-background-radius: 50;">
+                  <PasswordField fx:id="matKhau" focusTraversable="false" prefHeight="71.0" prefWidth="400.0" promptText=" Mật khẩu" style="-fx-background-radius: 50;">
                      <font>
                         <Font size="25.0" />
                      </font></PasswordField>
@@ -36,7 +36,7 @@
             </TilePane>
             <TilePane alignment="CENTER" prefHeight="75.0" prefWidth="502.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="57.0" prefWidth="294.0" style="-fx-background-radius: 40;" text="Đăng nhập">
+                  <Button mnemonicParsing="false" onAction="#dangNhap" prefHeight="57.0" prefWidth="294.0" style="-fx-background-radius: 40;" text="Đăng nhập">
                      <font>
                         <Font size="27.0" />
                      </font>
@@ -54,6 +54,15 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Text>
+            <TilePane alignment="CENTER" prefHeight="81.0" prefWidth="488.0">
+               <children>
+                  <Text fx:id="thongBao" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="339.13671875">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TilePane>
          </children>
       </VBox>
    </children>
