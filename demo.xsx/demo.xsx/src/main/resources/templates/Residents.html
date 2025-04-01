@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách cư dân</title>
+</head>
+<body>
+<h2>Danh sách cư dân</h2>
+<a href="/residents/add">Thêm cư dân mới</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Họ Tên</th>
+        <th>Email</th>
+        <th>Điện thoại</th>
+        <th>Căn hộ</th>
+        <th>Hành động</th>
+    </tr>
+    <tr th:each="resident : ${residents}">
+        <td th:text="${resident.id}"></td>
+        <td th:text="${resident.fullName}"></td>
+        <td th:text="${resident.email}"></td>
+        <td th:text="${resident.phone}"></td>
+        <td th:text="${resident.apartmentNumber}"></td>
+        <td>
+            <a th:href="@{/residents/edit/{id}(id=${resident.id})}">Chỉnh sửa</a> |
+            <a th:href="@{/residents/delete/{id}(id=${resident.id})}" onclick="return confirm('Xác nhận xóa?');">Xóa</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chỉnh sửa khoản thu</title>
+</head>
+<body>
+<h2>Chỉnh sửa khoản thu</h2>
+<form th:action="@{/fees/update/{id}(id=${fee.id})}" method="post">
+    <input type="hidden" name="id" th:value="${fee.id}">
+
+    <label>Mô tả:</label>
+    <input type="text" name="description" th:value="${fee.description}" required><br>
+
+    <label>Số tiền:</label>
+    <input type="number" step="0.01" name="amount" th:value="${fee.amount}" required><br>
+
+    <label>Loại khoản thu:</label>
+    <select name="category">
+        <option th:each="type : ${feeTypes}" th:value="${type}" th:text="${type}" th:selected="${type == fee.category}"></option>
+    </select><br>
+
+    <button type="submit">Cập nhật</button>
+</form>
+</body>
+</html>

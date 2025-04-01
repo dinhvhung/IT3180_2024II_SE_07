@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thêm khoản thu</title>
+</head>
+<body>
+<h2>Thêm khoản thu mới</h2>
+<form action="/fees/add" method="post">
+    <label>Mô tả:</label>
+    <input type="text" name="description" required><br>
+
+    <label>Số tiền:</label>
+    <input type="number" step="0.01" name="amount" required><br>
+
+    <label>Loại khoản thu:</label>
+    <select name="category">
+        <option th:each="type : ${feeTypes}" th:value="${type}" th:text="${type}"></option>
+    </select><br>
+
+    <button type="submit">Thêm khoản thu</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- src/main/resources/templates/invoice/edit.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cập Nhật Hóa Đơn</title>
+</head>
+<body>
+<h2>Cập Nhật Hóa Đơn</h2>
+<form th:action="@{/invoices/update/{id}(id=${invoice.id})}" th:object="${invoice}" method="post">
+    <label for="resident">Cư Dân:</label>
+    <input type="text" id="resident" th:field="*{resident.name}" /><br/>
+
+    <label for="amount">Số Tiền:</label>
+    <input type="number" id="amount" th:field="*{amount}" /><br/>
+
+    <label for="status">Trạng Thái:</label>
+    <input type="text" id="status" th:field="*{status}" /><br/>
+
+    <button type="submit">Cập nhật</button>
+</form>
+<a href="/invoices/list">Quay lại</a>
+</body>
+</html>

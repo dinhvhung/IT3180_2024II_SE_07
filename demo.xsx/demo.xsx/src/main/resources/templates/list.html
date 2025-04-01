@@ -1,0 +1,35 @@
+<!-- src/main/resources/templates/invoice/list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Danh sách Hóa Đơn</title>
+</head>
+<body>
+<h2>Danh sách Hóa Đơn</h2>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Cư Dân</th>
+    <th>Số Tiền</th>
+    <th>Trạng Thái</th>
+    <th>Hành Động</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="invoice : ${invoices}">
+    <td th:text="${invoice.id}"></td>
+    <td th:text="${invoice.resident.name}"></td>
+    <td th:text="${invoice.amount}"></td>
+    <td th:text="${invoice.status}"></td>
+    <td>
+      <a th:href="@{/invoices/edit/{id}(id=${invoice.id})}">Cập nhật</a> |
+      <a th:href="@{/invoices/delete/{id}(id=${invoice.id})}">Xóa</a> |
+      <a th:href="@{/invoices/confirm/{id}(id=${invoice.id})}">Xác nhận thanh toán</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a href="/invoices/create">Tạo Hóa Đơn Mới</a>
+</body>
+</html>

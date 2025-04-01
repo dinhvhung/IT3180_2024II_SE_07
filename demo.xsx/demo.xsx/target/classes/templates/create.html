@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tạo Hóa Đơn</title>
+</head>
+<body>
+<h2>Tạo Hóa Đơn Mới</h2>
+
+<!-- Form tạo hóa đơn -->
+<form th:action="@{/invoices/create}" th:object="${invoice}" method="post">
+
+    <!-- Trường nhập cho Cư Dân -->
+    <label for="resident">Cư Dân:</label>
+    <input type="text" id="resident" th:field="*{resident.name}" placeholder="Tên cư dân" required /><br/>
+
+    <!-- Trường nhập cho Số Tiền -->
+    <label for="amount">Số Tiền:</label>
+    <input type="number" id="amount" th:field="*{amount}" placeholder="Số tiền" required /><br/>
+
+    <!-- Trường nhập cho Trạng Thái -->
+    <label for="status">Trạng Thái:</label>
+    <input type="text" id="status" th:field="*{status}" placeholder="Trạng thái" required /><br/>
+
+    <!-- Nút submit form -->
+    <button type="submit">Tạo Hóa Đơn</button>
+</form>
+
+<a href="/invoices/list">Quay lại danh sách hóa đơn</a>
+</body>
+</html>
