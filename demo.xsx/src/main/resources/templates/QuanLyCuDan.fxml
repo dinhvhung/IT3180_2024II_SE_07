@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ResidentController">
+    <children>
+        <VBox spacing="10" alignment="CENTER" prefWidth="600" prefHeight="400">
+            <Label text="Quản lý Cư Dân" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            
+            <HBox spacing="10">
+                <Label text="Tìm kiếm ID:"/>
+                <TextField fx:id="searchField"/>
+                <Button text="Tìm" onAction="#onSearch"/>
+            </HBox>
+            
+            <TableView fx:id="residentTable">
+                <columns>
+                    <TableColumn text="ID" fx:id="idColumn"/>
+                    <TableColumn text="Tên" fx:id="nameColumn"/>
+                    <TableColumn text="Email" fx:id="emailColumn"/>
+                    <TableColumn text="Số điện thoại" fx:id="phoneColumn"/>
+                </columns>
+            </TableView>
+            
+            <HBox spacing="10">
+                <Button text="Thêm" onAction="#onAdd"/>
+                <Button text="Sửa" onAction="#onUpdate"/>
+                <Button text="Xóa" onAction="#onDelete"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
