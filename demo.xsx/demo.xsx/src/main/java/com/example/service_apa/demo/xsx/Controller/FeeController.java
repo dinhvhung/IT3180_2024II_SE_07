@@ -1,6 +1,7 @@
 package com.example.service_apa.demo.xsx.Controller;
 
 import com.example.service_apa.demo.xsx.Enums.FeeType;
+import com.example.service_apa.demo.xsx.Repository.FeeRepository;
 import com.example.service_apa.demo.xsx.Service.FeeService;
 import com.example.service_apa.demo.xsx.Entity.Fee;
 
@@ -16,7 +17,12 @@ import java.math.BigDecimal;
 @RestController
 @RequestMapping("/api/fees")
 public class FeeController {
+
+    @Autowired
     private final FeeService feeService;
+
+    @Autowired
+    private FeeRepository feeRepository;
 
     @Autowired
     public FeeController(FeeService feeService) {

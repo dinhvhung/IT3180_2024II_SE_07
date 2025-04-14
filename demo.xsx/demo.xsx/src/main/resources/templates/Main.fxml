@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.service_apa.demo.xsx.Controller.MainController">
+    <center>
+        <Label fx:id="label" text="Chào mừng đến với phần mềm quản lý chung cư!" style="-fx-font-size: 24px;" />
+    </center>
+    <bottom>
+        <Button text="Đăng xuất" onAction="#dangXuat" />
+    </bottom>
+</BorderPane>

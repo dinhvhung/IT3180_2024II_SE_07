@@ -6,11 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "fees") // Đặt tên bảng rõ ràng trong DB
+@Table(name = "fees")
 public class Fee {
 
     @Id
@@ -20,42 +21,40 @@ public class Fee {
     private String description;
 
     @Column(nullable = false)
-    private BigDecimal amount; // Dùng BigDecimal để tránh lỗi làm tròn số khi tính toán
+    private BigDecimal amount;
 
-    @ManyToOne(optional = false) // Không thể thiếu category
+    @ManyToOne(optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     private FeeCategory category;
 
-    @Enumerated(EnumType.STRING) // Lưu dưới dạng chuỗi thay vì số
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FeeType feeType;
 
-    private boolean isPaid = false;      // Trạng thái thanh toán
-    private boolean isConfirmed = false; // Trạng thái xác nhận
+    private boolean isPaid = false;
+    private boolean isConfirmed = false;
 
-    // Constructor mặc định
+    @Column(nullable = false)
+    private LocalDate date;  // Thêm trường date
+
     public Fee() {
     }
 
-    // Constructor có tham số đầy đủ
-    public Fee(String description, BigDecimal amount, FeeCategory category, FeeType feeType) {
+    public Fee(String description, BigDecimal amount, FeeCategory category, FeeType feeType, LocalDate date) {
         this.description = description;
         this.amount = amount;
         this.category = category;
         this.feeType = feeType;
         this.isPaid = false;
         this.isConfirmed = false;
+        this.date = date;  // Khởi tạo date
     }
 
-    // Đánh dấu đã thanh toán
     public void setPaid(boolean paid) {
         this.isPaid = paid;
     }
 
-    // Xác nhận thanh toán
     public void setConfirmed(boolean confirmed) {
         this.isConfirmed = confirmed;
     }
-
-
 }
