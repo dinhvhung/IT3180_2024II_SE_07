@@ -22,7 +22,7 @@ public class JavaFXApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main1.fxml"));
         fxmlLoader.setControllerFactory(springContext::getBean);
 
         Parent root = fxmlLoader.load();

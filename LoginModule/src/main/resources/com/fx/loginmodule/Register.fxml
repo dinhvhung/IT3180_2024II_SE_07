@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="577.0" prefWidth="640.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.loginmodule.RegisterController">
+    <children>
+        <ImageView fitHeight="577.0" fitWidth="659.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@image.jpg" />
+            </image>
+        </ImageView>
+        <VBox id="login-view" layoutX="23.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="600.0" styleClass="login-view" stylesheets="@application.css">
+            <children>
+                <HBox style="-fx-border-style: solid;" styleClass="login-title">
+                    <children>
+                        <Label styleClass="header" text="ĐĂNG KÝ" />
+                    </children>
+                </HBox>
+                <VBox prefHeight="276.0" prefWidth="566.0" styleClass="login-body">
+                    <children>
+                        <GridPane hgap="10.0" prefHeight="247.0" prefWidth="486.0" vgap="5.0">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="307.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Họ và tên" GridPane.rowIndex="1" />
+                                <Label text="Tên người dùng" GridPane.rowIndex="2" />
+                                <TextField fx:id="tenDangNhap" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <PasswordField fx:id="matKhau" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <HBox styleClass="sp-5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <PasswordField prefHeight="27.0" prefWidth="350.0" />
+                           </children>
+                                </HBox>
+                                <Label fx:id="thongBao" textFill="RED" GridPane.columnIndex="1">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
+                                <Label fx:id="dangNhap" onMouseClicked="#loadLogin" onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit" text="ĐÃ CÓ TÀI KHOẢN? ĐĂNG NHẬP" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Label>
+                        <Label text="Mật khẩu" GridPane.rowIndex="3" />
+                                  <Button mnemonicParsing="false" styleClass="wid-120" text="ĐĂNG KÝ" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                      <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                      </cursor>
+                                  </Button>
+                        <Label text="Nhập lại mật khẩu" GridPane.rowIndex="4" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
