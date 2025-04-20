@@ -14,7 +14,7 @@ public class LoginApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Phần mềm quản lý chung cư");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(false);  //để người dùng không phóng to được màn hình
         stage.show();
     }
 

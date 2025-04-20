@@ -26,7 +26,7 @@ public class LoginController {
     private TextField tenDangNhap;
 
     @FXML
-    private TextField matKhau;
+    private PasswordField matKhau;
     @FXML
     public void handleMouseEnter() {
         dangKy.setStyle("-fx-underline: true;");
@@ -45,11 +45,13 @@ public class LoginController {
     @FXML
     public void dangNhapAction()
     {
-        if (tenDangNhap.getText().trim().isEmpty() || matKhau.getText().trim().isEmpty()) thongBao.setText("Vui lòng nhập đủ thông tin!");
+        if (tenDangNhap.getText().trim().isEmpty() || matKhau.getText().trim().isEmpty()) {
+            thongBao.setText("Vui lòng nhập đủ thông tin!");
+        }
         else {
             if (!SceneLoader.checkLogin(tenDangNhap.getText(), matKhau.getText()))
             {
-                thongBao.setText("Không hợp lệ. Vui lòng thử lại!");
+                thongBao.setText("Tài khoản không hợp lệ. Vui lòng thử lại!");
             }
             else thongBao.setText("");
         }
