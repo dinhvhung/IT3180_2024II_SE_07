@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  */
 
 @Component
-@FxmlView("/ui/Login.fxml")
+@FxmlView("/ui/dangNhap.fxml")
 public class LoginController implements Initializable {
 
     @FXML
@@ -58,7 +58,8 @@ public class LoginController implements Initializable {
             router.navigate(DashboardController.class, event);
 
         } else {
-            lblLogin.setText("Login Failed.");
+            if (username.getText().trim().isEmpty()||password.getText().trim().isEmpty()) lblLogin.setText("Vui lòng nhập đầy đủ thông tin!");
+            else lblLogin.setText("Địa chỉ email hoặc mật khẩu tài khoản không đúng!");
         }
     }
 

@@ -21,6 +21,7 @@ public class Router {
         Stage stage = (Stage) source.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
     public <T> Parent getController(Class<T> cl, ActionEvent ae) {

@@ -29,6 +29,7 @@ public class FxApplication extends Application {
         Parent root = fxWeaver.loadView(SignupController.class);
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
 
     }

@@ -74,14 +74,14 @@ public class SignupController implements Initializable {
         // iterate the textField nodes
         for (TextField nodes : txtList) {
             if (nodes.getText().isEmpty()) {
-                lblError.setText("Please complete  all the form");
+                lblError.setText("Hãy điền đầy đủ thông tin!");
             }
 
         }
         if (boxCountry.getSelectionModel().isEmpty()) {     // check if a country is selected
-            lblCountryError.setText("Select a country from the list");
+            lblCountryError.setText("Hãy chọn 1 quốc tịch trong danh sách.");
         } else if (isValidEmailAddress(txtMail.getText()) == false) {     // check if the mail address is a valid address
-            lblMailError.setText("Enter a valid mail");
+            lblMailError.setText("Hãy điền 1 email hợp lệ!");
             lblError.setText("");
         } else {
             lblCountryError.setText("");
@@ -102,7 +102,7 @@ public class SignupController implements Initializable {
             user.setPassword(pass);
             user.setDatecreated(LocalDateTime.now());
             userService.save(user);
-            lblError.setText("Registaration is succesful");
+            lblError.setText("Đăng ký thành công!");
         }
 
     }

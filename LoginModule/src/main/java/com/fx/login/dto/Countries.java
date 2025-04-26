@@ -13,27 +13,8 @@ import java.util.ArrayList;
     public static ObservableList<String> obsList() {
         ArrayList<String> items = new ArrayList<>();
 
-        items.add("Afghanistan");
-        items.add("Albania");
-        items.add("Algeria");
-        items.add("Belgium");
-        items.add("Bolivia");
-        items.add("Brazil");
-        items.add("Cuba");
-        items.add("Denmark");
-        items.add("Estonia");
-        items.add("France");
-        items.add("Germany");
-        items.add("India");
-        items.add("Iran");
-        items.add("Isreal");
-        items.add("Japan");
-        items.add("Nigeria");
-        items.add("Pakistan");
-        items.add("Singapore");
-        items.add("Syria");
-        items.add("Turkey");
-
+        items.add("Việt Nam");
+        items.add("Khác");
         return obsList = FXCollections.observableArrayList(items);
 
     }
