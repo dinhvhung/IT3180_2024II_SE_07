@@ -26,7 +26,7 @@ public class Router {
     }
     public <T> Parent getController(Class<T> cl, ActionEvent ae) {
         Parent root = fxWeaver.loadView(cl);
-       return root;
+        return root;
     }
 
 }

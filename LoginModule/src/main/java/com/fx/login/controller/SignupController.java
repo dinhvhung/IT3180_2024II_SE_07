@@ -120,7 +120,7 @@ public class SignupController implements Initializable {
     }
     @FXML
     void onLogin(ActionEvent event) {
-router.navigate(LoginController.class, event);
+        router.navigate(LoginController.class, event);
     }
 
     @Override

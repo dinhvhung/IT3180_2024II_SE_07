@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
  */
 
 @Component
-@FxmlView("/ui/dangNhap.fxml")
+@FxmlView("/ui/login.fxml")
 public class LoginController implements Initializable {
 
     @FXML
