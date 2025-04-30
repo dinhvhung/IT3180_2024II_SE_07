@@ -1,0 +1,51 @@
+.background {
+    -fx-background-image: url("../images/apartment_background.jpg");
+    -fx-background-size: cover;
+}
+
+.backgroundForm {
+    -fx-background-color: rgba(255,255,255,0.8);
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+}
+
+.header {
+    -fx-background-color: rgba(255,255,255,0.8);
+    -fx-padding: 10;
+    -fx-spacing: 20;
+}
+
+.title {
+    -fx-font-size: 24px;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+}
+
+.formTitle {
+    -fx-font-size: 22px;
+    -fx-text-fill: #333;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+}
+
+.btnLogout {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+}
+
+.btnReset {
+    -fx-background-color: #ffc107;
+    -fx-text-fill: black;
+    -fx-background-radius: 5;
+}
+
+.btnSave {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+}
+
+.table .table-row-cell:hover {
+    -fx-background-color: #d0eaff;
+}

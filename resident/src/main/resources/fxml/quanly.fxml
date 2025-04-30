@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.resident.ResidentController">
+
+    <!-- TOP: Thanh tìm kiếm -->
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            <TextField fx:id="searchField" promptText="Nhập ID cư dân..." HBox.hgrow="ALWAYS"/>
+            <Button text="Tìm kiếm" onAction="#onSearch"/>
+            <Button text="Tải lại" onAction="#initialize"/>
+        </HBox>
+    </top>
+
+    <!-- CENTER: Bảng cư dân -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+
+            <Label text="Danh sách cư dân" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+            <TableView fx:id="residentTable" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="fullNameColumn" text="Họ tên" prefWidth="150"/>
+                    <TableColumn fx:id="emailColumn" text="Email" prefWidth="180"/>
+                    <TableColumn fx:id="phoneColumn" text="Số điện thoại" prefWidth="120"/>
+                    <TableColumn fx:id="apartmentNumberColumn" text="Căn hộ" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Các nút thao tác -->
+    <bottom>
+        <HBox spacing="15" alignment="CENTER">
+            <padding>
+                <Insets top="15" right="20" bottom="15" left="20"/>
+            </padding>
+            <Button text="Thêm cư dân" onAction="#onAdd" prefWidth="100"/>
+            <Button text="Cập nhật" onAction="#onUpdate" prefWidth="100"/>
+            <Button text="Xóa" onAction="#onDelete" prefWidth="100"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
