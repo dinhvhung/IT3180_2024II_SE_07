@@ -19,9 +19,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * @author Odofin Timothy
- */
 
 @Component
 @FxmlView("/ui/login.fxml")

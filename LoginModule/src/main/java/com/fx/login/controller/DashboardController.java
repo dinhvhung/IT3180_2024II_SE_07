@@ -31,10 +31,6 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * @author Odofin Timothy
- */
-
 @Component
 @FxmlView("/ui/dashboard.fxml")
 public class DashboardController implements Initializable {

@@ -36,12 +36,24 @@ public class User {
 	
 	private String password;
 
+	private Role role;
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", Fullname=" + fullname + ", lastName=" +  ", Date created=" + datecreated + ", email="
 				+ email + "]";
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public enum Role {
+		Admin, Resident
+	}
 	public long getId() {
 		return id;
 	}
