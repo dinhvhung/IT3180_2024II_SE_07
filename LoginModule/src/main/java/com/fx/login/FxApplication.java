@@ -26,7 +26,7 @@ public class FxApplication extends Application {
     @Override
     public void start(Stage stage) {
         FxWeaver fxWeaver = applicationContext.getBean(FxWeaver.class);
-        Parent root = fxWeaver.loadView(SignupController.class);
+        Parent root = fxWeaver.loadView(LoginController.class);
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);

@@ -58,3 +58,16 @@
      -fx-text-fill: white;
  }
 
+ .tile: normal {
+    -fx-background-color: lightgray;
+ }
+
+ #tile: hover {
+    -fx-background-color: lightblue;
+ }
+
+#tile:hover .label {
+    -fx-text-fill: #1a0000; /* hoặc màu bạn muốn */
+}
+
+

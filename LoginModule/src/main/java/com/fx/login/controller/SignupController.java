@@ -101,6 +101,7 @@ public class SignupController implements Initializable {
             user.setFullname(fullName);
             user.setPassword(pass);
             user.setDatecreated(LocalDateTime.now());
+            user.setRole(User.Role.Resident);
             userService.save(user);
             lblError.setText("Đăng ký thành công!");
         }
