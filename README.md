@@ -5,3 +5,4 @@
 - Vào mySQL cóp mấy dòng sau:
   create table if not exists testdb;
   alter table users modify role varchar(50);
+- Đổi lại username và pass trong application.properties cho giống với mySQL của mình
