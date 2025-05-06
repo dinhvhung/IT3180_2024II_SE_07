@@ -14,6 +14,7 @@ import java.util.ArrayList;
         ArrayList<String> items = new ArrayList<>();
 
         items.add("Việt Nam");
+        items.add("Thanh Hóa");
         items.add("Khác");
         return obsList = FXCollections.observableArrayList(items);
 

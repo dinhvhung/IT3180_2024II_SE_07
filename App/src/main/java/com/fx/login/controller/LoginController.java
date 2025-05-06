@@ -2,6 +2,8 @@ package com.fx.login.controller;
 
 
 import com.fx.login.config.Router;
+import com.fx.login.config.SessionContext;
+import com.fx.login.model.User;
 import com.fx.login.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -52,7 +55,18 @@ public class LoginController implements Initializable {
     @FXML
     private void login(ActionEvent event) throws IOException {
         if (userService.authenticate(getUsername(), getPassword())) {
-            router.navigate(DashboardController.class, event);
+            Optional<User> userOpt = userService.findByEmail(username.getText());
+            userOpt.ifPresent(user -> {
+                // lưu người dùng vào Session
+                SessionContext.getInstance().setCurrentUser(user);
+
+                try {
+                    router.navigate(DashboardController.class, event);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+
 
         } else {
             if (username.getText().trim().isEmpty()||password.getText().trim().isEmpty()) lblLogin.setText("Vui lòng nhập đầy đủ thông tin!");
