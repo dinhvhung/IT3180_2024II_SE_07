@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
@@ -27,15 +28,19 @@ public class DashboardController implements Initializable {
     private Router entrance;
 
     @FXML
+    private ScrollPane scrollPane;
+
+    @FXML
     private TilePane btnResident;
     @FXML
-    private BorderPane contentPane;
+    private AnchorPane contentPane;
 
     @FXML private Text welcomeText;
 
+    User currentUser;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        User currentUser = SessionContext.getInstance().getCurrentUser();
+        currentUser = SessionContext.getInstance().getCurrentUser();    //Lấy thông tin của session
         if (currentUser != null) {
             welcomeText.setText("Xin chào, " + currentUser.getFullname());
         }
@@ -43,9 +48,10 @@ public class DashboardController implements Initializable {
 
     @FXML
     public void loadResident(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/quanly.fxml"));
-        BorderPane scene1Pane = loader.load();
-        contentPane.setCenter(scene1Pane);
+        // Load Scene2.fxml
+        AnchorPane scene2 = FXMLLoader.load(getClass().getResource("/ui/quanly.fxml"));
+
+        scrollPane.setContent(scene2);
     }
 
     @FXML

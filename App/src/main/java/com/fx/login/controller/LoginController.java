@@ -58,7 +58,7 @@ public class LoginController implements Initializable {
             Optional<User> userOpt = userService.findByEmail(username.getText());
             userOpt.ifPresent(user -> {
                 // lưu người dùng vào Session
-                SessionContext.getInstance().setCurrentUser(user);
+                SessionContext.getInstance().setCurrentUser(user);  // Tạo 1 session để lưu thông tin người đăng nhập
 
                 try {
                     router.navigate(DashboardController.class, event);

@@ -50,7 +50,7 @@
                                 <Label text="Họ và tên" GridPane.rowIndex="1" />
                                 <Label text="Địa chỉ email" GridPane.rowIndex="3" />
                                 <TextField fx:id="txtFullName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <PasswordField fx:id="matKhau" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                <PasswordField fx:id="txtPassRetype" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                 <HBox styleClass="sp-5" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                     <children>
                                         <PasswordField fx:id="txtPass" prefHeight="27.0" prefWidth="350.0" />
@@ -74,7 +74,7 @@
                         <Label fx:id="lbalNameError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="lblMailError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label fx:id="lblPassError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Label fx:id="lblPassRetype" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <Label fx:id="lblCountryError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="10" />
                         <Label fx:id="lblCityError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="12" />
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="13">

@@ -14,6 +14,7 @@ public class DataInitializer {
         return args -> {
             if (userRepo.findByEmail("admin").isEmpty()) {
                 User admin = new User();
+                admin.setFullname("Hùng");
                 admin.setEmail("admin");
                 admin.setPassword("admin");
                 admin.setRole(User.Role.Admin);

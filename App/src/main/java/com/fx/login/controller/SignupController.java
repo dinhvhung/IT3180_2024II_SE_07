@@ -35,12 +35,18 @@ public class SignupController implements Initializable {
     private Label lblNameError;
 
     @FXML
+    private Label lblPassRetype;
+    @FXML
     private TextField txtMail;
     @FXML
     private Label lblMailError;
 
     @FXML
     private TextField txtPass;
+
+    @FXML
+    private TextField txtPassRetype;
+
     @FXML
     private Label lblPassError;
 
@@ -83,10 +89,15 @@ public class SignupController implements Initializable {
         } else if (isValidEmailAddress(txtMail.getText()) == false) {     // check if the mail address is a valid address
             lblMailError.setText("Hãy điền 1 email hợp lệ!");
             lblError.setText("");
-        } else {
+        } else if (userService.findByEmail(txtMail.getText()).isPresent()) {
+            lblMailError.setText("Email đã tồn tại! Vui lòng chọn email khác.");
+        } else if (!txtPass.getText().equals(txtPassRetype.getText())) {
+            lblPassRetype.setText("Mật khẩu nhập lại không khớp!");
+        }
+        else {
             lblCountryError.setText("");
             lblMailError.setText("");
-
+            lblPassRetype.setText("");
             // store the user's inputs
             fullName = txtFullName.getText();
             mail = txtMail.getText();
