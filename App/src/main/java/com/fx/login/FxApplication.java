@@ -1,7 +1,6 @@
 package com.fx.login;
 
 import com.fx.login.controller.LoginController;
-import com.fx.login.controller.SignupController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
@@ -19,7 +18,7 @@ public class FxApplication extends Application {
     public void init() {
         String[] args = getParameters().getRaw().toArray(new String[0]);
         this.applicationContext = new SpringApplicationBuilder()
-                .sources(MydeskApplication.class)
+                .sources(App.class)
                 .run(args);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+//  Khời tạo 1 admin
 public class DataInitializer {
     @Bean
     public CommandLineRunner initAdmin(UserRepo userRepo) {

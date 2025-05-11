@@ -8,11 +8,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- * @author Odofin Timothy
- *
- */
-
 @Entity
 @Table(name="users")
 @Data

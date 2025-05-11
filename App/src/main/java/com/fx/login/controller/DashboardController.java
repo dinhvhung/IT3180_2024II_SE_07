@@ -8,14 +8,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -49,7 +47,7 @@ public class DashboardController implements Initializable {
     @FXML
     public void loadResident(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         // Load Scene2.fxml
-        AnchorPane scene2 = FXMLLoader.load(getClass().getResource("/ui/quanly.fxml"));
+        AnchorPane scene2 = FXMLLoader.load(getClass().getResource("/ui/resident.fxml"));
 
         scrollPane.setContent(scene2);
     }
@@ -57,5 +55,13 @@ public class DashboardController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) throws IOException {
         entrance.navigate(LoginController.class, event);
+    }
+
+    @FXML
+    public void loadTrangChu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
+        // Load Scene2.fxml
+        AnchorPane scene2 = FXMLLoader.load(getClass().getResource("/ui/homepage.fxml"));
+
+        scrollPane.setContent(scene2);
     }
 }

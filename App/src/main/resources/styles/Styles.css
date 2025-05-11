@@ -70,4 +70,13 @@
     -fx-text-fill: #1a0000; /* hoặc màu bạn muốn */
 }
 
+.stackpane {
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: solid;
+}
+
+.news: hover {
+    -fx-fill: dodgerblue;
+}
+
 

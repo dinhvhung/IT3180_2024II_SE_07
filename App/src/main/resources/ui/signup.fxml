@@ -19,7 +19,10 @@
             <children>
                 <HBox prefHeight="47.0" prefWidth="566.0" style="-fx-border-style: solid;" styleClass="login-title">
                     <children>
-                        <Label styleClass="header" text="ĐĂNG KÝ" />
+                        <Label styleClass="header" text="ĐĂNG KÝ">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                     </children>
                 </HBox>
                 <VBox prefHeight="395.0" prefWidth="566.0" styleClass="login-body">
@@ -47,8 +50,14 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label text="Họ và tên" GridPane.rowIndex="1" />
-                                <Label text="Địa chỉ email" GridPane.rowIndex="3" />
+                                <Label text="Họ và tên" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                                <Label text="Địa chỉ email" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
                                 <TextField fx:id="txtFullName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                 <PasswordField fx:id="txtPassRetype" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                 <HBox styleClass="sp-5" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -61,15 +70,27 @@
                                         <Font size="14.0" />
                                     </font>
                                 </Label>
-                                <Label text="Mật khẩu" GridPane.rowIndex="5" />
-                                <Label text="Nhập lại mật khẩu" GridPane.rowIndex="7" />
+                                <Label text="Mật khẩu" GridPane.rowIndex="5">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                                <Label text="Nhập lại mật khẩu" GridPane.rowIndex="7">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
                                 <TextField fx:id="txtMail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Quốc tịch" GridPane.rowIndex="9" />
+                        <Label text="Quốc tịch" GridPane.rowIndex="9">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
                         <ComboBox fx:id="boxCountry" prefWidth="150.0" promptText="Chọn quốc tịch" GridPane.columnIndex="1" GridPane.rowIndex="9">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ComboBox>
-                        <Label text="Thành phố" GridPane.rowIndex="11" />
+                        <Label text="Thành phố" GridPane.rowIndex="11">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
                         <TextField fx:id="txtCity" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                         <Label fx:id="lbalNameError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="lblMailError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.HomepageController">
+   <children>
+      <Text fill="#1692ae" layoutX="84.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHÀO MỪNG ĐẾN VỚI ỨNG DỤNG QUẢN LÝ CHUNG CƯ BLUEMOON" textAlignment="CENTER" wrappingWidth="432.859375">
+         <font>
+            <Font name="Tahoma" size="27.0" />
+         </font>
+      </Text>
+      <GridPane alignment="CENTER" layoutX="73.0" layoutY="459.0" style="-fx-border-style: solid;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <HBox layoutX="29.0" layoutY="480.0" prefHeight="106.0" prefWidth="454.0" GridPane.rowIndex="1">
+               <children>
+                  <VBox layoutX="34.0" layoutY="135.0" prefHeight="128.0" prefWidth="288.0">
+                     <children>
+                        <Text pickOnBounds="true" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="news" text="Thanh Hóa chính thức trở thành 1 tiểu vương quốc" wrappingWidth="312.13671875">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Text>
+                        <Label prefHeight="39.0" prefWidth="238.0" text="Thanh Hóa vừa được công nhận là 1 vương quốc độc lập với bộ máy hành chính riêng sau cuộc họp kéo dài" wrapText="true" />
+                     </children>
+                  </VBox>
+                  <ImageView fitHeight="96.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/thanhhoa.JPG" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </HBox>
+            <StackPane prefHeight="16.0" prefWidth="454.0" styleClass="stackpane">
+               <children>
+                  <Label text="TIN TỨC TRONG NGÀY">
+                     <font>
+                        <Font name="Tahoma" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </GridPane>
+      <Label layoutX="1.0" layoutY="450.0" prefHeight="17.0" prefWidth="600.0" />
+      <PieChart fx:id="gioiTinh" layoutX="14.0" layoutY="99.0" prefHeight="274.0" prefWidth="280.0" title="Thống kê tỉ lệ nam-nữ" titleSide="BOTTOM" />
+      <PieChart fx:id="doTuoi" layoutX="307.0" layoutY="99.0" prefHeight="274.0" prefWidth="280.0" title="Thống kê tỉ lệ các độ tuổi" titleSide="BOTTOM" />
+   </children>
+</AnchorPane>

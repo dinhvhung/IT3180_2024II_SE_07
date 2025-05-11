@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.DashboardController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.DashboardController">
    <children>
       <VBox prefHeight="600.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: #001529;">
          <children>
@@ -21,7 +25,7 @@
                      </image>
                   </ImageView>
                </children></TilePane>
-            <TilePane id="tile" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" style="-fx-background-radius: 10;" stylesheets="@../styles/Styles.css">
+            <TilePane id="tile" alignment="CENTER_LEFT" onMouseClicked="#loadTrangChu" prefHeight="45.0" prefWidth="200.0" style="-fx-background-radius: 10;" stylesheets="@../styles/Styles.css">
                <children>
                   <Label prefHeight="40.0" prefWidth="121.0" text="Trang chủ" textFill="#e0d8d8">
                      <font>
@@ -66,6 +70,21 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TilePane>
+            <TilePane id="tile" alignment="CENTER_LEFT" layoutX="10.0" layoutY="299.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-radius: 10;" stylesheets="@../styles/Styles.css">
+               <children>
+                  <Label text="Thông báo" textFill="#e0d8d8">
+                     <font>
+                        <Font name="Tahoma" size="27.0" />
+                     </font>
+                     <TilePane.margin>
+                        <Insets left="20.0" />
+                     </TilePane.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TilePane>
          </children>
       </VBox>
       <AnchorPane layoutX="200.0" prefHeight="28.0" prefWidth="606.0">
@@ -92,7 +111,8 @@
       </AnchorPane>
       <ScrollPane fx:id="scrollPane" layoutX="199.0" layoutY="40.0" prefHeight="560.0" prefViewportHeight="560.0" prefViewportWidth="606.0" prefWidth="608.0">
          <content>
-            <AnchorPane fx:id="contentPane" layoutX="199.0" layoutY="40.0" prefHeight="560.0" prefWidth="606.0" />
+            <AnchorPane fx:id="contentPane" layoutX="199.0" layoutY="40.0" prefHeight="560.0" prefWidth="606.0">
+               </AnchorPane>
          </content>
       </ScrollPane>
    </children>
