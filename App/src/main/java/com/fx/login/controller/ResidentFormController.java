@@ -1,12 +1,20 @@
 package com.fx.login.controller;
 
 import com.fx.login.model.ResidentEntity;
+import com.fx.login.model.User;
+import com.fx.login.service.ResidentService;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ResidentFormController {
 
+    @Autowired
+    private ResidentService residentService;
     @FXML
     private TextField fullNameField;
     @FXML
@@ -37,7 +45,16 @@ public class ResidentFormController {
             resident.setPhone(phoneField.getText());
             resident.setApartmentNumber(apartmentNumberField.getText());
             resident.syncProperties(); // đồng bộ các thuộc tính
+
         }
         ((Stage) fullNameField.getScene().getWindow()).close(); // Đóng cửa sổ sau khi lưu
+    }
+
+    private void saveAlert(ResidentEntity resident) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("User saved successfully.");
+        alert.setHeaderText(null);
+        alert.setContentText("The user " + resident.getFullName() + " has been created ");
+        alert.showAndWait();
     }
 }

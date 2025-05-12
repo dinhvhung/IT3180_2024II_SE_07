@@ -3,7 +3,8 @@ package com.fx.login.service;
 import javax.persistence.EntityNotFoundException;
 
 import com.fx.login.model.ResidentEntity;
-import com.fx.login.repo.ResidentRepository;
+import com.fx.login.model.User;
+import com.fx.login.repo.ResidentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,16 @@ import java.util.Optional;
 public class ResidentService {
 
     @Autowired
-    private ResidentRepository residentRepository;
+    private ServiceUtil serviceUtil;
 
-    public ResidentService(ResidentRepository residentRepository) {
+    @Autowired
+    private ResidentRepo residentRepository;
+
+    public ResidentEntity save(ResidentEntity entity) {
+        return serviceUtil.getResidentRepo().save(entity);
+    }
+
+    public ResidentService(ResidentRepo residentRepository) {
         this.residentRepository = residentRepository;
     }
 
