@@ -1,10 +1,8 @@
 package com.fx.login.service;
 
+import com.fx.login.repo.ResidentRepository;
+import com.fx.login.model.Resident;
 import javax.persistence.EntityNotFoundException;
-
-import com.fx.login.model.ResidentEntity;
-import com.fx.login.model.User;
-import com.fx.login.repo.ResidentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,37 +13,30 @@ import java.util.Optional;
 public class ResidentService {
 
     @Autowired
-    private ServiceUtil serviceUtil;
+    private ResidentRepository residentRepository;
 
-    @Autowired
-    private ResidentRepo residentRepository;
-
-    public ResidentEntity save(ResidentEntity entity) {
-        return serviceUtil.getResidentRepo().save(entity);
-    }
-
-    public ResidentService(ResidentRepo residentRepository) {
+    public ResidentService(ResidentRepository residentRepository) {
         this.residentRepository = residentRepository;
     }
 
     // Lấy danh sách tất cả cư dân
-    public List<ResidentEntity> findAll() {
+    public List<Resident> findAll() {
         return residentRepository.findAll();
     }
 
     // Lấy thông tin cư dân theo ID
-    public Optional<ResidentEntity> findById(Long id) {
+    public Optional<Resident> findById(Long id) {
         return residentRepository.findById(id);
     }
 
     // Tạo mới cư dân
-    public ResidentEntity createResident(ResidentEntity resident) {
+    public Resident createResident(Resident resident) {
         return residentRepository.save(resident);
     }
 
     // Cập nhật thông tin cư dân
-    public ResidentEntity updateResident(Long id, ResidentEntity residentDetails) {
-        ResidentEntity resident = residentRepository.findById(id)
+    public Resident updateResident(Long id, Resident residentDetails) {
+        Resident resident = residentRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Resident not found"));
         resident.setFullName(residentDetails.getFullName());
         resident.setEmail(residentDetails.getEmail());

@@ -1,151 +1,107 @@
 package com.fx.login.model;
 
+import javax.persistence.*;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
+@Table(name = "resident")
 public class Resident {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "full_name")
     private String fullName;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "phone")
     private String phone;
+
+    @Column(name = "apartment_number")
     private String apartmentNumber;
 
-    // JavaFX Properties (để hiển thị trong TableView)
-    private transient LongProperty idProperty;
-    private transient StringProperty fullNameProperty;
-    private transient StringProperty emailProperty;
-    private transient StringProperty phoneProperty;
-    private transient StringProperty apartmentNumberProperty;
+    // JavaFX properties
+    @Transient
+    private LongProperty idProperty;
+    @Transient
+    private StringProperty fullNameProperty;
+    @Transient
+    private StringProperty emailProperty;
+    @Transient
+    private StringProperty phoneProperty;
+    @Transient
+    private StringProperty apartmentNumberProperty;
 
-    // Constructors
+    // Constructor mặc định
     public Resident() {
-        // Không tham số để hỗ trợ Jackson và RestTemplate
+        this.idProperty = new SimpleLongProperty();
+        this.fullNameProperty = new SimpleStringProperty();
+        this.emailProperty = new SimpleStringProperty();
+        this.phoneProperty = new SimpleStringProperty();
+        this.apartmentNumberProperty = new SimpleStringProperty();
+
+        // Đồng bộ 2 chiều
+        this.fullNameProperty.addListener((obs, oldVal, newVal) -> this.fullName = newVal);
+        this.emailProperty.addListener((obs, oldVal, newVal) -> this.email = newVal);
+        this.phoneProperty.addListener((obs, oldVal, newVal) -> this.phone = newVal);
+        this.apartmentNumberProperty.addListener((obs, oldVal, newVal) -> this.apartmentNumber = newVal);
+        this.idProperty.addListener((obs, oldVal, newVal) -> this.id = newVal.longValue());
     }
 
-    public Resident(String fullName, String email, String phone, String apartmentNumber) {
-        this.fullName = fullName;
-        this.email = email;
-        this.phone = phone;
-        this.apartmentNumber = apartmentNumber;
-        syncProperties();
-    }
 
     public Resident(Long id, String fullName, String email, String phone, String apartmentNumber) {
+        this();
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
         this.apartmentNumber = apartmentNumber;
-        syncProperties();
+        syncProperties();  // Đồng bộ ngay lập tức khi khởi tạo
     }
 
-    // Getters & Setters (dùng cho REST API)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-        if (idProperty != null) {
-            this.idProperty.set(id);
-        }
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-        if (fullNameProperty != null) {
-            this.fullNameProperty.set(fullName);
-        }
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-        if (emailProperty != null) {
-            this.emailProperty.set(email);
-        }
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-        if (phoneProperty != null) {
-            this.phoneProperty.set(phone);
-        }
-    }
-
-    public String getApartmentNumber() {
-        return apartmentNumber;
-    }
-
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-        if (apartmentNumberProperty != null) {
-            this.apartmentNumberProperty.set(apartmentNumber);
-        }
-    }
-
-    // Property methods (dùng cho TableView)
+    // Getter JavaFX Property
     public LongProperty idProperty() {
-        if (idProperty == null) {
-            idProperty = new SimpleLongProperty(this, "id", id != null ? id : 0L);
-        }
+        if (idProperty == null) idProperty = new SimpleLongProperty(id != null ? id : 0);
         return idProperty;
     }
 
     public StringProperty fullNameProperty() {
-        if (fullNameProperty == null) {
-            fullNameProperty = new SimpleStringProperty(this, "fullName", fullName);
-        }
+        if (fullNameProperty == null) fullNameProperty = new SimpleStringProperty(fullName);
         return fullNameProperty;
     }
 
     public StringProperty emailProperty() {
-        if (emailProperty == null) {
-            emailProperty = new SimpleStringProperty(this, "email", email);
-        }
+        if (emailProperty == null) emailProperty = new SimpleStringProperty(email);
         return emailProperty;
     }
 
     public StringProperty phoneProperty() {
-        if (phoneProperty == null) {
-            phoneProperty = new SimpleStringProperty(this, "phone", phone);
-        }
+        if (phoneProperty == null) phoneProperty = new SimpleStringProperty(phone);
         return phoneProperty;
     }
 
     public StringProperty apartmentNumberProperty() {
-        if (apartmentNumberProperty == null) {
-            apartmentNumberProperty = new SimpleStringProperty(this, "apartmentNumber", apartmentNumber);
-        }
+        if (apartmentNumberProperty == null) apartmentNumberProperty = new SimpleStringProperty(apartmentNumber);
         return apartmentNumberProperty;
     }
 
-    // Đồng bộ dữ liệu từ field → property (sau khi load từ backend)
+    // Đồng bộ dữ liệu JavaFX Property với các field thông thường
     public void syncProperties() {
-        idProperty();
-        fullNameProperty();
-        emailProperty();
-        phoneProperty();
-        apartmentNumberProperty();
-
-        if (id != null) idProperty.set(id);
-        if (fullName != null) fullNameProperty.set(fullName);
-        if (email != null) emailProperty.set(email);
-        if (phone != null) phoneProperty.set(phone);
-        if (apartmentNumber != null) apartmentNumberProperty.set(apartmentNumber);
+        idProperty().set(id != null ? id : 0);
+        fullNameProperty().set(fullName != null ? fullName : "");
+        emailProperty().set(email != null ? email : "");
+        phoneProperty().set(phone != null ? phone : "");
+        apartmentNumberProperty().set(apartmentNumber != null ? apartmentNumber : "");
     }
 }

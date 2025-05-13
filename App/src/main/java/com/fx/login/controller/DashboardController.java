@@ -42,6 +42,14 @@ public class DashboardController implements Initializable {
         if (currentUser != null) {
             welcomeText.setText("Xin chào, " + currentUser.getFullname());
         }
+        AnchorPane scene2 = null;
+        try {
+            scene2 = FXMLLoader.load(getClass().getResource("/ui/homepage.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        scrollPane.setContent(scene2);
     }
 
     @FXML

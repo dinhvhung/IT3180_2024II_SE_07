@@ -10,9 +10,13 @@ import net.rgielen.fxweaver.core.FxWeaver;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public class FxApplication extends Application {
+public class MainApplication extends Application {
 
-    private ConfigurableApplicationContext applicationContext;
+    private static ConfigurableApplicationContext applicationContext;
+
+    public static ConfigurableApplicationContext getSpringContext() {
+        return applicationContext;
+    }
 
     @Override
     public void init() {

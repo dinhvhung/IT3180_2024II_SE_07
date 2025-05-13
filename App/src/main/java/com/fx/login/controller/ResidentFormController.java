@@ -1,20 +1,12 @@
 package com.fx.login.controller;
 
-import com.fx.login.model.ResidentEntity;
-import com.fx.login.model.User;
-import com.fx.login.service.ResidentService;
+import com.fx.login.model.Resident;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
 public class ResidentFormController {
 
-    @Autowired
-    private ResidentService residentService;
     @FXML
     private TextField fullNameField;
     @FXML
@@ -24,37 +16,70 @@ public class ResidentFormController {
     @FXML
     private TextField apartmentNumberField;
 
-    private ResidentEntity resident;
+    // @FXML private Button cancelButton; // Nếu bạn có nút Cancel
 
-    public void setResident(ResidentEntity resident) {
+    private Resident resident;
+    private boolean saved = false; // Cờ để biết form có được lưu không
+
+    public void setResident(Resident resident) {
         this.resident = resident;
+        this.saved = false; // Reset cờ khi set resident mới
         if (resident != null) {
             fullNameField.setText(resident.getFullName());
             emailField.setText(resident.getEmail());
             phoneField.setText(resident.getPhone());
             apartmentNumberField.setText(resident.getApartmentNumber());
+        } else {
+            // Nếu là thêm mới, resident có thể là new ResidentEntity() rỗng
+            // hoặc bạn có thể khởi tạo một resident mới ở đây nếu cần
+            this.resident = new Resident(); // Đảm bảo resident không null
+            clearFields();
         }
     }
 
+    // Getter cho cờ 'saved'
+    public boolean isSaved() {
+        return saved;
+    }
+
+    // Getter cho resident (nếu ResidentController cần lấy lại)
+    // public ResidentEntity getResident() { return resident; }
 
     @FXML
     private void onSave() {
-        if (resident != null) {
-            resident.setFullName(fullNameField.getText());
-            resident.setEmail(emailField.getText());
-            resident.setPhone(phoneField.getText());
-            resident.setApartmentNumber(apartmentNumberField.getText());
-            resident.syncProperties(); // đồng bộ các thuộc tính
-
+        if (resident == null) { // Trường hợp này không nên xảy ra nếu setResident được gọi đúng
+            resident = new Resident();
         }
-        ((Stage) fullNameField.getScene().getWindow()).close(); // Đóng cửa sổ sau khi lưu
+        // Cập nhật trực tiếp vào đối tượng resident đã được truyền vào
+        resident.setFullName(fullNameField.getText());
+        resident.setEmail(emailField.getText());
+        resident.setPhone(phoneField.getText());
+        resident.setApartmentNumber(apartmentNumberField.getText());
+        // Không cần syncProperties() ở đây, ResidentController sẽ làm sau khi lưu DB thành công
+
+        this.saved = true; // Đánh dấu là đã lưu
+        closeWindow();
     }
 
-    private void saveAlert(ResidentEntity resident) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("User saved successfully.");
-        alert.setHeaderText(null);
-        alert.setContentText("The user " + resident.getFullName() + " has been created ");
-        alert.showAndWait();
+    // Thêm phương thức này nếu có nút "Hủy" (Cancel) trong FXML
+    @FXML
+    private void onCancel() {
+        this.saved = false; // Đánh dấu là không lưu
+        closeWindow();
+    }
+
+
+    private void clearFields() {
+        fullNameField.clear();
+        emailField.clear();
+        phoneField.clear();
+        apartmentNumberField.clear();
+    }
+
+    private void closeWindow() {
+        Stage stage = (Stage) fullNameField.getScene().getWindow();
+        if (stage != null) {
+            stage.close();
+        }
     }
 }
