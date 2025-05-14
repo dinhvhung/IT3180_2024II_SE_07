@@ -20,3 +20,4 @@ spring.jpa.hibernate.ddl-auto=update<br>
 spring.datasource.hikari.idleTimeout=600000<br>
 spring.datasource.hikari.maxLifetime=1800000<br>
 spring.datasource.hikari.maximumPoolSize=200<br>
+- Ib trưởng nhóm để lấy username + pass của database
