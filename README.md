@@ -6,9 +6,9 @@
 
 spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver<br>
 spring.datasource.url=jdbc:mysql://mysql-apartmentapp-apartment-app.d.aivencloud.com:26373/defaultdb?ssl-mode=REQUIRED<br>
-spring.datasource.username=avnadmin<br>
+spring.datasource.username=...<br>
 #<br>
-spring.datasource.password=AVNS_g280i3DXgtpvw9t6MDC<br>
+spring.datasource.password=...<br>
 spring.jpa.properties.hibernate.jdbc.time_zone=UTC+1<br>
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect<br>
 spring.jpa.properties.hibernate.id.new_generator_mappings = false<br>
