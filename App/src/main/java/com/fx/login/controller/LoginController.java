@@ -89,4 +89,7 @@ public class LoginController implements Initializable {
     }
 
 
+    public void handleForgotPassword(ActionEvent event) {
+        router.navigate(ForgotPasswordController.class, event);
+    }
 }

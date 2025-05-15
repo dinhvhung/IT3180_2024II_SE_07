@@ -54,4 +54,7 @@ public class UserService {
     public void deleteInBatch(List<User> users) {
         serviceUtil.getUserRepo().deleteInBatch(users);
     }
+    public boolean existsByEmail(String email) {
+        return findByEmail(email).isPresent();
+    }
 }
