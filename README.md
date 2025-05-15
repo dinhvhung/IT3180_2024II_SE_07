@@ -29,4 +29,4 @@ spring.mail.username=dvhung090705@gmail.com<br>
 spring.mail.password=...<br>
 spring.mail.properties.mail.smtp.auth=true<br>
 spring.mail.properties.mail.smtp.starttls.enable=true<br>
-- Ib trưởng nhóm để lấy username + pass của database<br> và pass của mail
+- Ib trưởng nhóm để lấy username + pass của database và pass của mail<br>
