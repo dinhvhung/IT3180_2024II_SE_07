@@ -93,17 +93,21 @@ public class FeeFormController {
             // Tách tháng và năm, chuẩn hóa về MM/yyyy
             String[] parts = monthInput.split("/");
             int month = Integer.parseInt(parts[0]);
-            String year = parts[1];
+            int year = Integer.parseInt(parts[1]);
 
             if (month < 1 || month > 12) {
                 showValidationAlert("Tháng phải nằm trong khoảng từ 1 đến 12.");
                 return false;
             }
 
-            String formattedMonth = String.format("%02d/%s", month, year);
+            if (year < 2000) {
+                showValidationAlert("Năm phải lớn hơn hoặc bằng 2000.");
+                return false;
+            }
+
+            String formattedMonth = String.format("%02d/%d", month, year);
             monthlyFee.setText(formattedMonth);
         }
-
         return true;
     }
 

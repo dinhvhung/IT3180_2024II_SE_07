@@ -36,8 +36,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label text="ID khoản thu" GridPane.rowIndex="4" />
-      <TextField fx:id="feeID" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    </children>
     <columnConstraints>
         <ColumnConstraints />
@@ -48,7 +46,6 @@
         <RowConstraints />
         <RowConstraints />
         <RowConstraints />
-      <RowConstraints />
         <RowConstraints />
     </rowConstraints>
 </GridPane>

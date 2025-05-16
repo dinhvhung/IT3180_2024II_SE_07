@@ -21,11 +21,16 @@ public class UnpaidFormController {
     private TextField totalPayment;
     @FXML
     private TextField dueDate;
-    @FXML
-    private TextField feeID;
+
+    private String feeID;
 
     private UnpaidEntity unpaid;
     private boolean saved = false; // Cờ để biết form có được lưu không
+    private boolean isUpdateMode = false; // Cờ để biết có cần tắt editable trong hàm update không
+
+    public void setIsUpdateMode(boolean updateMode) {
+        this.isUpdateMode = updateMode;
+    }
 
     public void setUnpaid(UnpaidEntity unpaid) {
         this.unpaid = unpaid;
@@ -34,9 +39,11 @@ public class UnpaidFormController {
             residentName.setText(unpaid.getResidentName());
             apartmentName.setText(unpaid.getApartmentName());
             totalPayment.setText(unpaid.getTotalPayment());
+
+            if(!isUpdateMode) totalPayment.setEditable(false);
+            if(totalPayment.getText().equals("Bấm \"Xem\" để biết chính xác")) totalPayment.setText("");
             dueDate.setText(unpaid.getDueDate());
-            feeID.setText(String.valueOf(unpaid.getFeeID()));
-            feeID.setEditable(false);
+            feeID = String.valueOf(unpaid.getFeeID());
         } else {
             this.unpaid = new UnpaidEntity(); // Đảm bảo unpaid không null
             clearFields();
@@ -151,7 +158,7 @@ public class UnpaidFormController {
         unpaid.setApartmentName(apartmentName.getText().trim());
         unpaid.setTotalPayment(totalPayment.getText().trim());
         unpaid.setDueDate(dueDate.getText().trim());
-        unpaid.setFeeID(Long.valueOf(feeID.getText().trim()));
+        unpaid.setFeeID(Long.valueOf(feeID.trim()));
         // Không cần syncProperties() ở đây, UnpaidListController sẽ làm sau khi lưu DB thành công
 
         this.saved = true; // Đánh dấu là đã lưu

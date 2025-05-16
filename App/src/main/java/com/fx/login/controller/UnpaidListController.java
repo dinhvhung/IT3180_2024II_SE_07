@@ -32,8 +32,8 @@ public class UnpaidListController {
     private Button deleteFormButton;
     @FXML
     private TextField feeNameField;
-    @FXML
-    private TextField amountDueField;
+
+    private String amountDueField;
     @FXML
     private TextField monthlyFeeField;
     @FXML
@@ -56,13 +56,15 @@ public class UnpaidListController {
 
     private FeeEntity fee;
     private boolean saved = false; // Cờ để biết form có được lưu không
+    private boolean isUpdateMode = false; // Cờ để biết có cần tắt editable trong hàm update không
 
     public void setFee(FeeEntity fee) {
         this.fee = fee;
         this.saved = false; // Reset cờ khi set resident mới
         if (fee != null) {
             feeNameField.setText(fee.getFeeName());
-//            amountDueField.setText(fee.getAmountDue());
+            amountDueField = fee.getAmountDue();
+            if(amountDueField.equals("Bấm \"Xem\" để biết chính xác")) isUpdateMode = true;
             monthlyFeeField.setText(fee.getMonthlyFee());
             unpaidHouseholdsField.setText(fee.getUnpaidHouseholds());
             feeNameField.setEditable(false);
@@ -82,7 +84,7 @@ public class UnpaidListController {
 
     private void clearFields() {
         feeNameField.clear();
-        amountDueField.clear();
+        amountDueField = null;
         monthlyFeeField.clear();
         unpaidHouseholdsField.clear();
     }
@@ -225,12 +227,14 @@ public class UnpaidListController {
         // Lấy trực tiếp từ fee để tránh TH load lại bị sai do ng dùng nhập lỗi(//Đã fix k cho người dùng thay đổi)
         Long s = fee.getId();
         newUnpaid.setFeeID(s);
+        if(amountDueField != null) newUnpaid.setTotalPayment(amountDueField);
+//        if(amountDueField.equals("Bấm \"Xem\" để biết chính xác")) newUnpaid.setTotalPayment("");
         boolean saved = showUnpaidForm(newUnpaid, "Thêm khoản phí mới");
 
         if (saved) {
             try {
                 // Không cần setId, DB sẽ tự tạo
-                UnpaidEntity savedUnpaid = unpaidService.createResident(newUnpaid);
+                UnpaidEntity savedUnpaid = unpaidService.createUnpaid(newUnpaid);
                 savedUnpaid.syncProperties(); // Đồng bộ properties (bao gồm ID mới)
                 unpaidsUiList.add(savedUnpaid);
                 unpaidTable.getSelectionModel().select(savedUnpaid);
@@ -327,6 +331,7 @@ public class UnpaidListController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/UnpaidForm.fxml"));
             Parent root = loader.load();
             UnpaidFormController controller = loader.getController();
+            controller.setIsUpdateMode(isUpdateMode);
             controller.setUnpaid(unpaid); // Truyền đối tượng unpaid vào form
 
             Stage stage = new Stage();

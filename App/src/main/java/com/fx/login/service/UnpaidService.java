@@ -30,7 +30,7 @@ public class UnpaidService {
     }
 
     // Tạo mới
-    public UnpaidEntity createResident(UnpaidEntity unpaid) {
+    public UnpaidEntity createUnpaid(UnpaidEntity unpaid) {
         return unpaidRepository.save(unpaid);
     }
 
