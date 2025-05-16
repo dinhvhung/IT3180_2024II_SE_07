@@ -10,7 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.MouseEvent;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +26,8 @@ public class ChangePasswordController {
     @FXML
     private PasswordField passMoiRetypeField;
 
+    @FXML
+    private Label lblChangePassword;
     @Autowired private UserService userService;
     @Autowired private Router router;
     User currentUser;
@@ -33,11 +37,15 @@ public class ChangePasswordController {
     }
 
     public void saveUser(ActionEvent e){
-        currentUser.setPassword(passMoiField.getText());
-        User newUser = userService.save(currentUser);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Đổi mật khẩu thành công!");
-        alert.setHeaderText(null);
-        router.navigate(LoginController.class, e);
+        if (!(passMoiField.getText().equals(passMoiRetypeField.getText()))) lblChangePassword.setText("Mật khẩu nhập lại không trùng khớp!");
+        else {
+            currentUser.setPassword(passMoiField.getText());
+            userService.save(currentUser);
+            lblChangePassword.setText("Thay đổi mật khẩu thành công");
+        }
+    }
+
+    public void loadLogin(MouseEvent mouseEvent) {
+        router.navigateMouseEvent(LoginController.class, mouseEvent);
     }
 }

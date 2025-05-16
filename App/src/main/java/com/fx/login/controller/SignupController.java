@@ -1,8 +1,15 @@
 package com.fx.login.controller;
 
+import com.fx.login.config.PendingSessionContext;
 import com.fx.login.config.Router;
+import com.fx.login.config.SessionContext;
 import com.fx.login.dto.Countries;
+import com.fx.login.model.PendingUser;
+import com.fx.login.model.Resident;
 import com.fx.login.model.User;
+import com.fx.login.service.EmailService;
+import com.fx.login.service.PasswordResetService;
+import com.fx.login.service.PendingUserService;
 import com.fx.login.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +24,7 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 @Component
@@ -24,6 +32,10 @@ import java.util.ResourceBundle;
 public class SignupController implements Initializable {
     @Autowired
     UserService userService;
+
+    @Autowired
+    PendingUserService pendingUserService;
+
     @Autowired
     Router router;
 
@@ -63,6 +75,8 @@ public class SignupController implements Initializable {
     @FXML
     private Label lblError;     // General Error Label
 
+    @Autowired private EmailService emailService;
+    @Autowired private PasswordResetService resetService;
     @FXML
     private void handleRegisterButtonAction(ActionEvent event) {
         String fullName;
@@ -93,8 +107,7 @@ public class SignupController implements Initializable {
             lblMailError.setText("Email đã tồn tại! Vui lòng chọn email khác.");
         } else if (!txtPass.getText().equals(txtPassRetype.getText())) {
             lblPassRetype.setText("Mật khẩu nhập lại không khớp!");
-        }
-        else {
+        } else {
             lblCountryError.setText("");
             lblMailError.setText("");
             lblPassRetype.setText("");
@@ -105,7 +118,7 @@ public class SignupController implements Initializable {
             country = boxCountry.getSelectionModel().getSelectedItem().toString();
             city = txtCity.getText();
 
-            User user = new User();
+            PendingUser user = new PendingUser();
             user.setCity(city);
             user.setCountry(country);
             user.setEmail(mail);
@@ -113,8 +126,26 @@ public class SignupController implements Initializable {
             user.setPassword(pass);
             user.setDatecreated(LocalDateTime.now());
             user.setRole(User.Role.Resident);
-            userService.save(user);
-            lblError.setText("Đăng ký thành công!");
+            pendingUserService.save(user);
+
+            String email = txtMail.getText();
+            if (pendingUserService.existsByEmail(email)) {
+                String code = resetService.generateCode();
+                resetService.storeCode(email, code);
+                emailService.sendVerificationCode(email, code);
+            }
+
+            Optional<PendingUser> userOpt = pendingUserService.findByEmail(txtMail.getText());
+            userOpt.ifPresent(pendingUser -> {
+                // lưu người dùng vào Session
+                PendingSessionContext.getInstance().setCurrentPendingUser(pendingUser);  // Tạo 1 session để lưu thông tin người đăng nhập
+
+                try {
+                    router.navigate(ConfirmController.class, event);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
 
     }
@@ -123,8 +154,9 @@ public class SignupController implements Initializable {
     public static boolean isValidEmailAddress(String email) {
         boolean result = true;
         try {
-            //  InternetAddress emailAddr = new InternetAddress(email);
-            //emailAddr.validate();
+            if (email == null || !email.matches("^\\S+@\\S+\\.\\S+$")) {
+                result = false;
+            }
         } catch (Exception ex) {
             result = false;
         }
@@ -143,4 +175,5 @@ public class SignupController implements Initializable {
         boxCountry.setItems(Countries.obsList());
 
     }
+
 }

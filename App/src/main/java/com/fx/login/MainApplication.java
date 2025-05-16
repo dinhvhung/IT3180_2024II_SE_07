@@ -1,6 +1,7 @@
 package com.fx.login;
 
 import com.fx.login.controller.LoginController;
+import com.fx.login.controller.SignupController;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Parent;
