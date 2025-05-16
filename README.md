@@ -33,6 +33,6 @@ spring.mail.password=...<br>
 spring.mail.properties.mail.smtp.auth=true<br>
 spring.mail.properties.mail.smtp.starttls.enable=true<br>
 - Ib trưởng nhóm để lấy username + pass của database và pass của mail<br>
-- Thông tin admin:
+- Thông tin admin:<br>
     - Email: admin
     - Mật khẩu: admin
