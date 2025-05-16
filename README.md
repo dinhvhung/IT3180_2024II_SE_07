@@ -24,7 +24,7 @@ spring.datasource.hikari.idleTimeout=600000<br>
 spring.datasource.hikari.maxLifetime=1800000<br>
 spring.datasource.hikari.maximumPoolSize=200<br>
 <br>
-server.port=8080<br>
+server.port=8082<br>
 <br>
 spring.mail.host=smtp.gmail.com<br>
 spring.mail.port=587<br>
@@ -33,3 +33,6 @@ spring.mail.password=...<br>
 spring.mail.properties.mail.smtp.auth=true<br>
 spring.mail.properties.mail.smtp.starttls.enable=true<br>
 - Ib trưởng nhóm để lấy username + pass của database và pass của mail<br>
+- Thông tin admin:
+    - Email: admin
+    - Mật khẩu: admin
