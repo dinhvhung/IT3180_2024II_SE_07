@@ -1,5 +1,8 @@
 # IT3180_2024II_SE_07
 Đây là bài tập lớn môn Nhập môn Công nghệ phần mềm của nhóm SE_07, thành viên gồm: Đinh Việt Hùng, Bùi Đình Sang, Đỗ Văn Tài
+# Yêu cầu trang thiết bị
+- Có IntelliJ (bản nào cũng được)
+- Có nguồn mạng ổn định
 # Hướng dẫn sử dụng
 - Tải code về
 - Vào application.properties cóp mấy dòng sau:<br>
@@ -21,7 +24,7 @@ spring.datasource.hikari.idleTimeout=600000<br>
 spring.datasource.hikari.maxLifetime=1800000<br>
 spring.datasource.hikari.maximumPoolSize=200<br>
 <br>
-server.port=8080<br>
+server.port=8082<br>
 <br>
 spring.mail.host=smtp.gmail.com<br>
 spring.mail.port=587<br>
@@ -30,3 +33,6 @@ spring.mail.password=...<br>
 spring.mail.properties.mail.smtp.auth=true<br>
 spring.mail.properties.mail.smtp.starttls.enable=true<br>
 - Ib trưởng nhóm để lấy username + pass của database và pass của mail<br>
+- Thông tin admin:<br>
+    - Email: admin
+    - Mật khẩu: admin
