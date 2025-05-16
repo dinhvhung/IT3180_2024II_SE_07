@@ -70,7 +70,10 @@ public class LoginController implements Initializable {
 
         } else {
             if (username.getText().trim().isEmpty()||password.getText().trim().isEmpty()) lblLogin.setText("Vui lòng nhập đầy đủ thông tin!");
-            else lblLogin.setText("Địa chỉ email hoặc mật khẩu tài khoản không đúng!");
+            else {
+                lblLogin.setText("");
+                lblLogin.setText("Địa chỉ email hoặc mật khẩu tài khoản không đúng!");
+            }
         }
     }
 

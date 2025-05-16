@@ -1,15 +1,11 @@
 package com.fx.login.controller;
 
-import com.fx.login.MainApplication;
 import com.fx.login.config.Router;
 import com.fx.login.config.SessionContext;
 import com.fx.login.model.User;
-import com.fx.login.service.ResidentService;
 import com.fx.login.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
@@ -38,6 +34,7 @@ public class ChangePasswordController {
 
     public void saveUser(ActionEvent e){
         if (!(passMoiField.getText().equals(passMoiRetypeField.getText()))) lblChangePassword.setText("Mật khẩu nhập lại không trùng khớp!");
+        else if (passMoiField.getText().equals(currentUser.getPassword())) lblChangePassword.setText("Đây là mật khẩu cũ của bạn!");
         else {
             currentUser.setPassword(passMoiField.getText());
             userService.save(currentUser);

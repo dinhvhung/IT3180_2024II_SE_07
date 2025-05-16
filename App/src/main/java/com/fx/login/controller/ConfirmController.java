@@ -2,7 +2,6 @@ package com.fx.login.controller;
 
 import com.fx.login.config.PendingSessionContext;
 import com.fx.login.config.Router;
-import com.fx.login.config.SessionContext;
 import com.fx.login.model.PendingUser;
 import com.fx.login.model.User;
 import com.fx.login.repo.PendingUserRepo;
@@ -18,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Component
 @FxmlView("/ui/confirm.fxml")
@@ -48,7 +46,7 @@ public class ConfirmController {
         String code = codeField.getText();
         if (resetService.verifyCode(email, code)) {
                 try {
-                    lblConfirm.setText("Mã chính xác.");
+                    lblConfirm.setText("Mã chính xác. Tài khoản của bạn đã được xác nhận!");
                     User user = new User();
                     user.setCity(currentPendingUser.getCity());
                     user.setCountry(currentPendingUser.getCountry());

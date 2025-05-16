@@ -39,13 +39,14 @@ public class ForgotPasswordController {
     @FXML
     private void handleSendCode() {
         String email = emailField.getText();
-        if (userService.existsByEmail(email)) {
+        if (emailField.getText().trim().isEmpty()) lblNotification.setText("Vui lòng điền email!");
+        else if (userService.existsByEmail(email)) {
             String code = resetService.generateCode();
             resetService.storeCode(email, code);
             emailService.sendVerificationCode(email, code);
             lblNotification.setText("Mã xác thực đã gửi!");
         } else {
-            lblNotification.setText("Email không tồn tại.");
+            lblNotification.setText("Email của người dùng không tồn tại!");
         }
     }
 
@@ -66,7 +67,7 @@ public class ForgotPasswordController {
                 }
             });
         } else {
-            System.out.println("Mã không chính xác.");
+            lblNotification.setText("Mã không chính xác.");
         }
     }
 

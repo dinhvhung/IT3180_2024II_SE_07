@@ -17,4 +17,12 @@ public class EmailService {
         message.setText("Mã xác thực của bạn là: " + code);
         mailSender.send(message);
     }
+
+    public void sendAccountVerificationCode(String toEmail, String code) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(toEmail);
+        message.setSubject("Mã xác thực tài khoản");
+        message.setText("Mã xác thực của bạn là: " + code);
+        mailSender.send(message);
+    }
 }

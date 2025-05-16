@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
@@ -69,6 +70,12 @@ public class DashboardController implements Initializable {
     public void loadTrangChu(javafx.scene.input.MouseEvent mouseEvent) throws IOException {
         // Load Scene2.fxml
         AnchorPane scene2 = FXMLLoader.load(getClass().getResource("/ui/homepage.fxml"));
+
+        scrollPane.setContent(scene2);
+    }
+
+    public void loadFee(MouseEvent mouseEvent) throws IOException {
+        AnchorPane scene2 = FXMLLoader.load(getClass().getResource("/ui/fee.fxml"));
 
         scrollPane.setContent(scene2);
     }

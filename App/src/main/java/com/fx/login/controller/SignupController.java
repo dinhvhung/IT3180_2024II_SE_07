@@ -2,10 +2,8 @@ package com.fx.login.controller;
 
 import com.fx.login.config.PendingSessionContext;
 import com.fx.login.config.Router;
-import com.fx.login.config.SessionContext;
 import com.fx.login.dto.Countries;
 import com.fx.login.model.PendingUser;
-import com.fx.login.model.Resident;
 import com.fx.login.model.User;
 import com.fx.login.service.EmailService;
 import com.fx.login.service.PasswordResetService;
@@ -132,7 +130,7 @@ public class SignupController implements Initializable {
             if (pendingUserService.existsByEmail(email)) {
                 String code = resetService.generateCode();
                 resetService.storeCode(email, code);
-                emailService.sendVerificationCode(email, code);
+                emailService.sendAccountVerificationCode(email, code);
             }
 
             Optional<PendingUser> userOpt = pendingUserService.findByEmail(txtMail.getText());
