@@ -61,7 +61,7 @@ public class ForgotPasswordController {
                 SessionContext.getInstance().setCurrentUser(user);  // Tạo 1 session để lưu thông tin người đăng nhập
 
                 try {
-                    router.navigate(ChangePasswordController.class, event);
+                    router.navigate(NewPasswordController.class, event);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -19,7 +19,7 @@ public class PendingUser {
 
     private LocalDateTime datecreated;
 
-    private String city;
+    private String sex;
 
     private String country;
 
@@ -57,12 +57,12 @@ public class PendingUser {
         this.datecreated = datecreated;
     }
 
-    public String getCity() {
-        return city;
+    public String getSex() {
+        return sex;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getCountry() {

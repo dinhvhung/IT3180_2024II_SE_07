@@ -79,4 +79,8 @@
     -fx-fill: dodgerblue;
 }
 
+.profile: hover {
+    -fx-background-color: #6F858C;
+}
+
 

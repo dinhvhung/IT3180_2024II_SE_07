@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,8 +48,9 @@ public class ConfirmController {
         if (resetService.verifyCode(email, code)) {
                 try {
                     lblConfirm.setText("Mã chính xác. Tài khoản của bạn đã được xác nhận!");
+                    lblConfirm.setTextFill(Color.web("#229abb"));
                     User user = new User();
-                    user.setCity(currentPendingUser.getCity());
+                    user.setSex(currentPendingUser.getSex());
                     user.setCountry(currentPendingUser.getCountry());
                     user.setEmail(currentPendingUser.getEmail());
                     user.setFullname(currentPendingUser.getFullname());

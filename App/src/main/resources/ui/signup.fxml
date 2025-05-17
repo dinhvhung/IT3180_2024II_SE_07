@@ -87,11 +87,10 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ComboBox>
-                        <Label text="Thành phố" GridPane.rowIndex="11">
+                        <Label text="Giới tính" GridPane.rowIndex="11">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <TextField fx:id="txtCity" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                         <Label fx:id="lbalNameError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="lblMailError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label fx:id="lblPassError" textFill="RED" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -115,6 +114,10 @@
                                       </Button>
                            </children>
                         </HBox>
+                        <ComboBox fx:id="boxSex" prefWidth="150.0" promptText="Chọn giới tính" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ComboBox>
                             </children>
                         </GridPane>
                     </children>

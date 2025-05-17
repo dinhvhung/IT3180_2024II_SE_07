@@ -3,6 +3,7 @@ package com.fx.login.controller;
 import com.fx.login.config.PendingSessionContext;
 import com.fx.login.config.Router;
 import com.fx.login.dto.Countries;
+import com.fx.login.dto.Sex;
 import com.fx.login.model.PendingUser;
 import com.fx.login.model.User;
 import com.fx.login.service.EmailService;
@@ -45,6 +46,8 @@ public class SignupController implements Initializable {
     private Label lblNameError;
 
     @FXML
+    private ComboBox boxSex;
+    @FXML
     private Label lblPassRetype;
     @FXML
     private TextField txtMail;
@@ -81,14 +84,13 @@ public class SignupController implements Initializable {
         String mail;
         String pass;
         String country;
-        String city;
+        String sex;
 
         // Check if any of the text field is empty
         ArrayList<TextField> txtList = new ArrayList<>();
         txtList.add(txtFullName);
         txtList.add(txtMail);
         txtList.add(txtPass);
-        txtList.add(txtCity);
         // iterate the textField nodes
         for (TextField nodes : txtList) {
             if (nodes.getText().isEmpty()) {
@@ -114,10 +116,10 @@ public class SignupController implements Initializable {
             mail = txtMail.getText();
             pass = txtPass.getText();
             country = boxCountry.getSelectionModel().getSelectedItem().toString();
-            city = txtCity.getText();
+            sex = boxSex.getSelectionModel().getSelectedItem().toString();
 
             PendingUser user = new PendingUser();
-            user.setCity(city);
+            user.setSex(sex);
             user.setCountry(country);
             user.setEmail(mail);
             user.setFullname(fullName);
@@ -171,6 +173,7 @@ public class SignupController implements Initializable {
 
         // display the list of countries
         boxCountry.setItems(Countries.obsList());
+        boxSex.setItems(Sex.obsList());
 
     }
 

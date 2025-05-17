@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
+import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,8 @@ public class DashboardController implements Initializable {
     @FXML
     private AnchorPane contentPane;
 
+    @Autowired
+    FxWeaver fxWeaver;
     @FXML private Text welcomeText;
 
     User currentUser;
@@ -41,7 +44,7 @@ public class DashboardController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         currentUser = SessionContext.getInstance().getCurrentUser();    //Lấy thông tin của session
         if (currentUser != null) {
-            welcomeText.setText("Xin chào, " + currentUser.getFullname());
+            welcomeText.setText(currentUser.getFullname());
         }
         AnchorPane scene2 = null;
         try {
@@ -76,6 +79,12 @@ public class DashboardController implements Initializable {
 
     public void loadFee(MouseEvent mouseEvent) throws IOException {
         AnchorPane scene2 = FXMLLoader.load(getClass().getResource("/ui/fee.fxml"));
+
+        scrollPane.setContent(scene2);
+    }
+
+    public void loadProfile(MouseEvent mouseEvent) throws IOException {
+        AnchorPane scene2 = fxWeaver.loadView(ProfileController.class);
 
         scrollPane.setContent(scene2);
     }

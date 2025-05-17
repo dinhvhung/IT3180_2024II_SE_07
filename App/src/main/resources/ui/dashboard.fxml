@@ -22,7 +22,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.DashboardController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: #001529;">
+      <VBox prefHeight="600.0" prefWidth="199.0" spacing="20.0" style="-fx-background-color: #001529;">
          <children>
             <TilePane alignment="CENTER" prefHeight="139.0" prefWidth="200.0">
                <children>
@@ -92,9 +92,24 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </TilePane>
+            <TilePane id="tile" alignment="CENTER_LEFT" layoutX="10.0" layoutY="364.0" prefHeight="45.0" prefWidth="200.0" style="-fx-background-radius: 10;" stylesheets="@../styles/Styles.css">
+               <children>
+                  <Label text="Khiếu nại" textFill="#e0d8d8">
+                     <font>
+                        <Font name="Tahoma" size="27.0" />
+                     </font>
+                     <TilePane.margin>
+                        <Insets left="20.0" />
+                     </TilePane.margin>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </TilePane>
          </children>
       </VBox>
-      <AnchorPane layoutX="200.0" prefHeight="28.0" prefWidth="606.0">
+      <AnchorPane layoutX="198.0" prefHeight="37.0" prefWidth="608.0">
          <children>
             <Button layoutX="520.0" layoutY="5.0" mnemonicParsing="false" onAction="#logOut" text="Đăng xuất">
                <font>
@@ -104,21 +119,34 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fx:id="welcomeText" layoutX="60.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0">
-               <font>
-                  <Font name="Tahoma" size="14.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="34.0" fitWidth="48.0" layoutX="6.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/avatar.png" />
-               </image>
-            </ImageView>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#loadProfile" prefHeight="40.0" prefWidth="123.0" style="-fx-background-radius: 8;" styleClass="profile">
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/avatar.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Text fx:id="welcomeText" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font name="Tahoma" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
          </children>
       </AnchorPane>
       <ScrollPane fx:id="scrollPane" layoutX="199.0" layoutY="40.0" prefHeight="560.0" prefViewportHeight="560.0" prefViewportWidth="606.0" prefWidth="608.0">
          <content>
-            <AnchorPane fx:id="contentPane" layoutX="199.0" layoutY="40.0" prefHeight="560.0" prefWidth="606.0">
+            <AnchorPane fx:id="contentPane" layoutX="199.0" layoutY="40.0" prefHeight="560.0" prefWidth="600.0">
                </AnchorPane>
          </content>
       </ScrollPane>

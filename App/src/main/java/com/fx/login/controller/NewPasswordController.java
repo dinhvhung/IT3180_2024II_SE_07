@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @FxmlView("/ui/changepassword.fxml")
-public class ChangePasswordController {
+public class NewPasswordController {
     @FXML
     private PasswordField passMoiField;
 
