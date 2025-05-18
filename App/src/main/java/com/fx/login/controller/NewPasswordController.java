@@ -9,12 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@FxmlView("/ui/changepassword.fxml")
+@FxmlView("/ui/newpassword.fxml")
 public class NewPasswordController {
     @FXML
     private PasswordField passMoiField;
@@ -39,6 +40,7 @@ public class NewPasswordController {
             currentUser.setPassword(passMoiField.getText());
             userService.save(currentUser);
             lblChangePassword.setText("Thay đổi mật khẩu thành công");
+            lblChangePassword.setTextFill(Color.web("#229abb"));
         }
     }
 

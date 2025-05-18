@@ -54,9 +54,15 @@
             </TextField>
             <ComboBox fx:id="newSex" prefHeight="25.0" prefWidth="167.0" promptText="Bỏ chọn để không lưu" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ComboBox fx:id="newNationality" prefHeight="25.0" prefWidth="167.0" promptText="Bỏ chọn để không lưu" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text fx:id="txtNotification" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text fx:id="txtNotification" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font></Text>
          </children>
       </GridPane>
-      <Button layoutX="277.0" layoutY="242.0" mnemonicParsing="false" onAction="#saveInfo" text="Lưu" />
+      <Button fx:id="btnSave" layoutX="277.0" layoutY="242.0" mnemonicParsing="false" onAction="#saveInfo" text="Lưu">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,7 @@ public class ForgotPasswordController {
             resetService.storeCode(email, code);
             emailService.sendVerificationCode(email, code);
             lblNotification.setText("Mã xác thực đã gửi!");
+            lblNotification.setTextFill(Color.web("#229abb"));
         } else {
             lblNotification.setText("Email của người dùng không tồn tại!");
         }

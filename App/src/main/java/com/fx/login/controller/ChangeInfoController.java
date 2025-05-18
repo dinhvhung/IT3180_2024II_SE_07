@@ -3,18 +3,24 @@ package com.fx.login.controller;
 import com.fx.login.config.PendingSessionContext;
 import com.fx.login.config.Router;
 import com.fx.login.config.SessionContext;
+import com.fx.login.dto.Countries;
+import com.fx.login.dto.Sex;
 import com.fx.login.model.PendingUser;
 import com.fx.login.model.User;
 import com.fx.login.service.EmailService;
 import com.fx.login.service.PasswordResetService;
 import com.fx.login.service.PendingUserService;
 import com.fx.login.service.UserService;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,6 +44,7 @@ public class ChangeInfoController {
     @FXML
     private ComboBox newNationality;
 
+    @FXML private Button btnSave;
     @Autowired private PendingUserService pendingUserService;
     @Autowired private PasswordResetService resetService;
     @Autowired private EmailService emailService;
@@ -49,22 +56,23 @@ public class ChangeInfoController {
     public void initialize() {
         currentPendingUser = PendingSessionContext.getInstance().getCurrentPendingUser();
         currentUser = SessionContext.getInstance().getCurrentUser();
+        newSex.setItems(Sex.obsList());
+        newNationality.setItems((Countries.obsList()));
     }
 
-    public void saveInfo(ActionEvent event) {
+    public void saveInfo(ActionEvent actionEvent) {
         if (!(newName.getText().trim().isEmpty())) currentPendingUser.setFullname(newName.getText());
         if (!(newSex.getValue() == null)) currentPendingUser.setSex(newSex.getSelectionModel().getSelectedItem().toString());
         if (!(newNationality.getValue() == null)) currentPendingUser.setCountry(newNationality.getSelectionModel().getSelectedItem().toString());
-        if (!(newEmail.getText().trim().isEmpty())) {
+        if (!(newEmail.getText().trim().isEmpty() || newEmail.getText().equals(currentPendingUser.getEmail()))) {
             currentPendingUser.setEmail(newEmail.getText());
             String email = newEmail.getText();
-            if (pendingUserService.existsByEmail(email)) {
-                String code = resetService.generateCode();
-                resetService.storeCode(email, code);
-                emailService.sendAccountVerificationCode(email, code);
-            }
+            String code = resetService.generateCode();
+            resetService.storeCode(email, code);
+            emailService.sendInfoVerificationCode(email, code);
 
-            router.navigate(ConfirmChangeInfoController.class, event);
+
+            router.navigate(ConfirmChangeInfoController.class, actionEvent);
         }
 
         else {
@@ -81,6 +89,14 @@ public class ChangeInfoController {
             txtNotification.setText("Lưu thông tin thành công!");
             txtNotification.setFill(Color.web("#229abb"));
 
+            PauseTransition delay = new PauseTransition(Duration.seconds(5));
+            delay.setOnFinished(event -> {
+                // Lấy Stage từ button
+                Stage stage = (Stage) btnSave.getScene().getWindow();
+                stage.close();
+            });
+
+            delay.play();
         }
     }
 }

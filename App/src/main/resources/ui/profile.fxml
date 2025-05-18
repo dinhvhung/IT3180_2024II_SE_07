@@ -68,13 +68,19 @@
                </font></Label>
          </children>
       </GridPane>
-      <Button layoutX="109.0" layoutY="441.0" mnemonicParsing="false" onAction="#changeInfo" text="Sửa thông tin">
+      <Button layoutX="87.0" layoutY="434.0" mnemonicParsing="false" onAction="#changeInfo" text="Sửa thông tin" textFill="#218161">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button layoutX="402.0" layoutY="441.0" mnemonicParsing="false" text="Đổi mật khẩu">
+         </cursor>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="380.0" layoutY="434.0" mnemonicParsing="false" onAction="#changePass" text="Đổi mật khẩu" textFill="#218161">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

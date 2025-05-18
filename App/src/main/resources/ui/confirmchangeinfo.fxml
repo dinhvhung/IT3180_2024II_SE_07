@@ -21,6 +21,9 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="verifyButton" layoutX="303.0" layoutY="204.0" mnemonicParsing="false" onAction="#verifyCode" text="Xác nhận" />
+      <Button fx:id="verifyButton" layoutX="303.0" layoutY="204.0" mnemonicParsing="false" onAction="#verifyCode" text="Xác nhận">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
    </children>
 </AnchorPane>

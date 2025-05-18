@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class ProfileController implements Initializable {
         lblNationality.setText(currentUser.getCountry());
     }
 
-    public void changeInfo(ActionEvent event) {
+    public void changeInfo(ActionEvent actionEvent) {
         PendingUser pendingUser = new PendingUser();
         pendingUser.setFullname(currentUser.getFullname());
         pendingUser.setCountry(currentUser.getCountry());
@@ -73,10 +74,47 @@ public class ProfileController implements Initializable {
 
             try {
                 Parent root = fxWeaver.loadView(ChangeInfoController.class);
+
                 Stage stage = new Stage();
-                stage.setTitle("Thay đổi thông tin");
+                stage.setOnCloseRequest(event -> {
+                    String pendingEmail = pendingUser.getEmail();
+                    boolean deleted = pendingUserService.deleteUserByEmail(pendingEmail);
+                    if (deleted) System.out.println("Đã xóa tk");
+                });
                 stage.setScene(new Scene(root));
                 stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void changePass(ActionEvent actionEvent) {
+        PendingUser pendingUser = new PendingUser();
+        pendingUser.setFullname(currentUser.getFullname());
+        pendingUser.setCountry(currentUser.getCountry());
+        pendingUser.setEmail(currentUser.getEmail());
+        pendingUser.setPassword(currentUser.getPassword());
+        pendingUser.setSex(currentUser.getSex());
+        pendingUserService.save(pendingUser);
+
+        Optional<PendingUser> userOpt = pendingUserService.findByEmail(pendingUser.getEmail());
+        userOpt.ifPresent(user -> {
+            // lưu người dùng vào Session
+            PendingSessionContext.getInstance().setCurrentPendingUser(pendingUser);  // Tạo 1 session để lưu thông tin người đăng nhập
+
+            try {
+                Parent root = fxWeaver.loadView(ChangePassController.class);
+                Stage stage = new Stage();
+
+                stage.setOnCloseRequest(event -> {
+                    String pendingEmail = pendingUser.getEmail();
+                    boolean deleted = pendingUserService.deleteUserByEmail(pendingEmail);
+                    if (deleted) System.out.println("Đã xóa tk");
+                });
+                stage.setScene(new Scene(root));
+                stage.show();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -33,6 +33,7 @@ public class MainApplication extends Application {
         Parent root = fxWeaver.loadView(LoginController.class);
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setTitle("Phần mềm quản lý chung cư");
         stage.setResizable(false);
         stage.show();
 

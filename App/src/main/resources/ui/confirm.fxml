@@ -35,9 +35,9 @@
                 </HBox>
                 <VBox alignment="CENTER" styleClass="login-body">
                     <children>
-                  <Text fill="#bf1616" strokeType="OUTSIDE" strokeWidth="0.0" text="Chúng tôi vừa gửi mã OTP vào địa chỉ email bạn đăng kí. Vui lòng điền mã để xác thực tài khoản!" textAlignment="CENTER" wrappingWidth="401.25341796875">
+                  <Text fill="#bf1616" strokeType="OUTSIDE" strokeWidth="0.0" text="Chúng tôi vừa gửi mã OTP vào địa chỉ email bạn đăng kí. Vui lòng điền mã để xác thực tài khoản!" textAlignment="CENTER" wrappingWidth="466.25341796875">
                      <font>
-                        <Font name="Tahoma" size="15.0" />
+                        <Font name="Tahoma" size="18.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="10.0" />

@@ -62,7 +62,7 @@ public class ConfirmController {
                     e.printStackTrace();
                 }
         } else {
-            lblConfirm.setText("Mã không chính xác.");
+            lblConfirm.setText("Mã không chính xác!");
         }
     }
 
