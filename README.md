@@ -4,7 +4,8 @@
 - Có IntelliJ (bản nào cũng được)
 - Có nguồn mạng ổn định
 # Hướng dẫn sử dụng
-- Tải code về
+- Clone repo về
+- Vào IntelliJ mở file ApartmentApp
 - Vào application.properties cóp mấy dòng sau:<br>
 
 spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver<br>
@@ -33,6 +34,7 @@ spring.mail.password=...<br>
 spring.mail.properties.mail.smtp.auth=true<br>
 spring.mail.properties.mail.smtp.starttls.enable=true<br>
 - Ib trưởng nhóm để lấy username + pass của database và pass của mail<br>
+- Chạy class App
 - Thông tin admin:<br>
     - Email: admin
     - Mật khẩu: admin
