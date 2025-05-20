@@ -5,6 +5,7 @@
 - Có nguồn mạng ổn định
 # Hướng dẫn sử dụng
 - Clone repo về
+    - Mở Git Bash gõ: git clone https://github.com/dinhvhung/IT3180_2024II_SE_07.git
 - Vào IntelliJ mở file ApartmentApp
 - Vào application.properties cóp mấy dòng sau:<br>
 
@@ -25,7 +26,7 @@ spring.datasource.hikari.idleTimeout=600000<br>
 spring.datasource.hikari.maxLifetime=1800000<br>
 spring.datasource.hikari.maximumPoolSize=200<br>
 <br>
-server.port=8079<br>
+server.port=8083<br>
 <br>
 spring.mail.host=smtp.gmail.com<br>
 spring.mail.port=587<br>
