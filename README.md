@@ -24,7 +24,7 @@ spring.datasource.hikari.idleTimeout=600000<br>
 spring.datasource.hikari.maxLifetime=1800000<br>
 spring.datasource.hikari.maximumPoolSize=200<br>
 <br>
-server.port=8082<br>
+server.port=8079<br>
 <br>
 spring.mail.host=smtp.gmail.com<br>
 spring.mail.port=587<br>
